@@ -2,6 +2,10 @@
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
+  <% if @user==current_user %> <!--現在ログインしているユーザーを取得-->
+    <P><%= link_to "プロフィール編集",edit_user_path(@user) %></P>
+  <% end %>
+
 </div>
 
 <!-- ユーザーの投稿一覧 -->
