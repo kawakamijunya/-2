@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 #コメントは、投稿画像に対してコメントされます。このため、post_commentsは、post_imagesに結びつきます。
 #以下のように親子関係になります。
  resources :post_images,only:[:new,:create,:index,:show,:destroy] do
-     resources :post_comments,only:[:create,:destroy]
+     resource :favorites,only:[:create,:destroy] 
+     resources :post_comments,only:[:create,:destroy] #resourceは「それ自身のidが分からなくても、関連する他のモデルのidから特定できる」
  end
  resources :users,only:[:show,:edit,:update]
 
