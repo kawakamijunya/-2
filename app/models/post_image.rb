@@ -1,9 +1,10 @@
 class PostImage < ApplicationRecord
 
   has_one_attached :image
-  belongs_to :user
-  
-  
+  belongs_to :user #PostImageモデルに関連付けられるUserモデルは、1つ
+  has_many :post_comments,dependent: :destroy #PostCommentモデルとの1:Nの関係
+
+
   def get_image
     unless image.attached?
       file_path=Rails.root.join('app/assets/images/no_image.jpg')

@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
-  has_many :post_images,dependent: :destroy
-
+  #dependent: :destroyは、has_manyで使えるオプションです。 1:Nの関係において、「1」のデータが削除された場合、関連する「N」のデータも削除される設定
+  has_many :post_images,dependent: :destroy #PostImageモデルとの1:Nの関係
+  has_many :post_comments,dependent: :destroy #PostCommentモデルとの1:Nの関係
   has_one_attached :profile_image
 
 
