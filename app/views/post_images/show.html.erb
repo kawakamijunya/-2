@@ -2,7 +2,12 @@
   <%= image_tag @post_image.get_image %>
   <P>ショップ名:<%= @post_image.shop_name %></P>
   <P>説明:<%= @post_image.caption %></P>
-  <P>投稿ユーザー画像:<%= image_tag 'sample-author1.jpg' %></P>
+
+  <P>投稿ユーザー画像:<%= image_tag @post_image.user.get_profile_image(100,100) %></P>
+  <!-- 1. @post_image.userで、投稿画像に紐づいたユーザーの情報(投稿したユーザーの情報)を取得できる
+          2. 「.user」の部分でUserモデルを使用しているため、Userモデルに記述しているget_profile_imageメソッドが使えるようになる
+          3. 結果、@post_image.user.get_profile_imageと記述することで、投稿画像に紐づいたユーザーのプロフィール画像を表示できる  -->
+
   <P>ユーザーネーム:<%= @post_image.user.name %></P>
   <p>投稿日:<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
   <% if @post_image.user == current_user %>
