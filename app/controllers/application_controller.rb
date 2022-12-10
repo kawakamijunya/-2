@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   #before_actionメソッドは、このコントローラが動作する前に実行されます。
   before_action :authenticate_user!,except:[:top] #exceptでトップページのみログイン状態に関わらず、アクセス可能とするためにtopアクションを指定
-  #authenticate_userメソッドは、devise側が用意しているメソッドです。 
+  #authenticate_userメソッドは、devise側が用意しているメソッドです。
   #:authenticate_user!とすることによって、「ログイン認証されていなければ、
   #ログイン画面へリダイレクトする」機能を実装できます。
   before_action :configure_permitted_parameters,if: :devise_controller?
